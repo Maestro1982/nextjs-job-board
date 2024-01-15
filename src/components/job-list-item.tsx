@@ -5,6 +5,8 @@ import { Banknote, Briefcase, Clock, Globe2, MapPin } from "lucide-react";
 import companyLogoPlaceholder from "@/assets/company-logo-placeholder.png";
 import { formatMoney, relativeDate } from "@/lib/utils";
 
+import Badge from "@/components/badge";
+
 interface JobListItemProps {
   job: Job;
 }
@@ -58,6 +60,13 @@ export default function JobListItem({
             {relativeDate(createdAt)}
           </p>
         </div>
+      </div>
+      <div className="hidden shrink-0 flex-col items-end justify-between sm:flex">
+        <Badge>{type}</Badge>
+        <span className="flex items-center gap-1.5 text-muted-foreground">
+          <Clock size={16} />
+          {relativeDate(createdAt)}
+        </span>
       </div>
     </article>
   );
