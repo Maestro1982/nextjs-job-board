@@ -12,7 +12,7 @@
   "dependencies": {
     "@clerk/nextjs": "^4.29.2",
     "@hookform/resolvers": "^3.3.4",
-    "@prisma/client": "^5.8.0",
+    "@prisma/client": "^5.8.1",
     "@radix-ui/react-label": "^2.0.2",
     "@radix-ui/react-slot": "^1.0.2",
     "@vercel/blob": "^0.16.1",
@@ -23,7 +23,6 @@
     "markdown-draft-js": "^2.4.0",
     "nanoid": "^5.0.4",
     "next": "14.0.4",
-    "prisma": "^5.8.0",
     "react": "^18",
     "react-dom": "^18",
     "react-draft-wysiwyg": "^1.15.0",
@@ -46,6 +45,7 @@
     "postcss": "^8",
     "prettier": "^3.1.1",
     "prettier-plugin-tailwindcss": "^0.5.11",
+    "prisma": "^5.8.1",
     "tailwindcss": "^3.3.0",
     "typescript": "^5"
   }

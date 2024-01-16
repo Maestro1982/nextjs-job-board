@@ -34,7 +34,7 @@ export default async function JobResults({
       searchFilter,
       type ? { type } : {},
       location ? { location } : {},
-      remote ? { locationType: "remote" } : {},
+      remote ? { locationType: "Remote" } : {},
       { isApproved: true },
     ],
   };
