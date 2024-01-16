@@ -47,7 +47,9 @@ export default async function JobFilterSidebar({
 
   return (
     <aside className="sticky top-0 h-fit rounded-lg border bg-background p-4 md:w-[260px]">
-      <form action={filterJobs}>
+      {/* By adding a key with JSON.stringify() the form will go back to the original state from the beginning.
+          If you press the logo of the company not when your refreshing the page. */}
+      <form action={filterJobs} key={JSON.stringify(defaultValues)}>
         <div className="space-y-4">
           <div className="flex flex-col gap-2">
             <Label htmlFor="query">Search</Label>

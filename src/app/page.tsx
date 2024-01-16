@@ -1,3 +1,5 @@
+import { Metadata } from "next";
+
 import JobFilterSidebar from "@/components/job-filter-sidebar";
 import JobResults from "@/components/job-results";
 
@@ -25,6 +27,20 @@ function getTitle({ query, type, location, remote }: JobFilterValues) {
   const titleSuffix = location ? ` in ${location}` : "";
 
   return `${titlePrefix}${titleSuffix}`;
+}
+
+/* Generate dynamic metadata */
+export function generateMetadata({
+  searchParams: { query, type, location, remote },
+}: PageProps): Metadata {
+  return {
+    title: `${getTitle({
+      query,
+      type,
+      location,
+      remote: remote === "true",
+    })} | IT-Jobs`,
+  };
 }
 
 export default async function Home({
