@@ -1,5 +1,6 @@
 "use client";
 
+import { X } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -162,6 +163,23 @@ export default function NewJobForm() {
                       ref={field.ref}
                     />
                   </FormControl>
+                  {watch("location") && (
+                    <div className="flex items-center gap-1">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setValue("location", "", { shouldValidate: true });
+                        }}
+                        className="flex items-center"
+                      >
+                        <X size={20} className="text-red-500" />
+                      </button>
+                      <div className="flex flex-col">
+                        <span className="text-sm">{watch("location")}</span>
+                        <FormMessage />
+                      </div>
+                    </div>
+                  )}
                   <FormMessage />
                 </FormItem>
               )}
