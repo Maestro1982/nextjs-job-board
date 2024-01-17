@@ -4,6 +4,7 @@ import { X } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { draftToMarkdown } from "markdown-draft-js";
+import { toast } from "sonner";
 
 import {
   Form,
@@ -25,6 +26,8 @@ import LoadingButton from "@/components/loading-button";
 import { CreateJobValues, createJobSchema } from "@/lib/validation";
 import { jobTypes, locationTypes } from "@/lib/job-types";
 
+import { createJobPosting } from "./action";
+
 export default function NewJobForm() {
   const form = useForm<CreateJobValues>({
     resolver: zodResolver(createJobSchema),
@@ -41,7 +44,20 @@ export default function NewJobForm() {
   } = form;
 
   async function onSubmit(values: CreateJobValues) {
-    alert(JSON.stringify(values, null, 2));
+    const formaData = new FormData();
+
+    Object.entries(values).forEach(([key, value]) => {
+      if (value) {
+        formaData.append(key, value);
+      }
+    });
+
+    try {
+      await createJobPosting(formaData);
+      toast.success("Job created successfully.");
+    } catch (error) {
+      toast.error("Something went wrong, please try again.");
+    }
   }
 
   return (
