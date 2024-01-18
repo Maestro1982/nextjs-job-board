@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Prisma } from "@prisma/client";
 
 import prisma from "@/lib/prisma";
@@ -46,7 +47,9 @@ export default async function JobResults({
   return (
     <div className="grow space-y-4">
       {jobs.map((job) => (
-        <JobListItem key={job.id} job={job} />
+        <Link key={job.id} href={`/jobs/${job.slug}`} className="block">
+          <JobListItem job={job} />
+        </Link>
       ))}
       {jobs.length === 0 && (
         <p className="m-auto text-center">
