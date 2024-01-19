@@ -11,6 +11,7 @@ import { isAdmin } from "@/lib/utils";
 type FormState = { error?: string } | undefined;
 
 export async function approveSubmission(
+  prevState: FormState,
   formData: FormData,
 ): Promise<FormState> {
   try {
@@ -40,7 +41,7 @@ export async function approveSubmission(
   }
 }
 
-export async function deleteJob(formData: FormData) {
+export async function deleteJob(prevState: FormState, formData: FormData) {
   try {
     const jobId = parseInt(formData.get("jobId") as string);
     const user = await currentUser();

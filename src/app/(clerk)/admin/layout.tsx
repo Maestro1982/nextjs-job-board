@@ -2,6 +2,8 @@ import { ReactNode } from "react";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Metadata } from "next";
 
+import AdminNavbar from "@/app/(clerk)/admin/admin-navbar";
+
 export const metadata: Metadata = {
   title: "Admin",
 };
@@ -9,7 +11,8 @@ export const metadata: Metadata = {
 export default function AdminLayout({ children }: { children: ReactNode }) {
   return (
     <ClerkProvider>
-      <div className="flex h-full items-center justify-center">{children}</div>
+      <AdminNavbar />
+      {children}
     </ClerkProvider>
   );
 }
